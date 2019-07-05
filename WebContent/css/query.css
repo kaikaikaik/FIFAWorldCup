@@ -1,0 +1,324 @@
+.banner{
+	background-image: url(../img/banner.png);
+	height:40px;
+}
+.line1{
+	width:20px;
+	color:#ede9c3;
+}
+.banner a{
+	font-size:30px;
+	text-decoration:none;
+	margin-left:200px;
+	color:#ede9c3;
+}
+.container{
+	width:100%;
+	
+	margin:a auto;
+	padding: 10px 10px;
+	display: block;
+	align-items: center;
+	justify-content: center;
+}
+
+.news_area{
+	width:100%;
+	height: 700px;
+	margin: 0 auto;
+	padding: 0px 20px 20px 0px;
+	position: relative;
+	left:0px;right:0px;
+	background:url(../img/qianban.jpg) ;
+	background-repeat: no-repeat;
+	background-position: 0 0px;
+	background-size: 100% 86%;
+	
+}
+.top_daohang{
+	display: block;
+	margin-top:25px;
+	width:100%;
+	height:140px;
+	background-image:url(../img/topdaohang.png);
+	background-size: cover;
+}
+
+.biaoti_{
+	width: 1200px;
+	display: block;
+	height: 50px;
+	background: url(../img/daohangtou.jpg);
+	padding: 5px 15px; 
+	color: white;
+	line-height: 50px;
+}
+.info_nav{
+	width: 1200px;
+	height: 600px;
+	border-left: solid;
+	border-right: solid;
+	border-bottom: solid;
+	border-color: blue;
+	border-width: 1px;
+	margin: 0 auto;
+	
+}
+.news_list{
+	display: block;
+	float: left;
+	width: 750px;
+	height:500px;
+	padding: 15px 15px;
+	
+	
+}
+#new_ul{
+	
+}
+.news_li{
+	vertical-align: middle;
+	height: 34px;
+	line-height: 34px;
+	
+}
+.news_li:hover{
+	
+	text-decoration: none;
+}
+
+.a_txt{
+	display: block;
+	text-decoration: none;
+	font-size: 17px;
+    width: 430px;
+    padding-left: 14px;
+    float: left;
+    margin-right: 15px;
+    color: black;
+}
+.a_txt:hover{
+	color: blue;
+	text-decoration: none;
+}
+.date_time{
+	display: block;
+	float: right;
+}
+
+
+.right_area{
+	width:400px;
+	height: auto;
+	display: block;
+	float: right;
+}
+.img_line{
+	width: 380px;
+	height: auto;
+	float: right;
+}
+.img_block{
+	width:140px;
+	height: 130px;
+	float: right;
+	margin: 30px 25px;
+	padding: 5px 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+.img1{
+	width: 135px;
+	height: 115px;
+	cursor: pointer;
+	transition: all 0.6s;
+}
+
+.img1:hover{
+	transform: scale(1.4);
+}
+.shijiebeiA17891_md01 {
+	background: #034384 url(http://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1527146055132517/shijiebei17891_bg01_17891_180528.jpg) no-repeat bottom center;
+	height: auto;
+}
+
+.shijiebeiA17891_md01 .con {
+	width: 100%;
+	background: url(http://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1527146055132517/shijiebei17891_bg02_17891_180528.png) no-repeat;
+	overflow: hidden;
+}
+
+.shijiebeiA17891_md01 .con01 {
+	width: 100%;
+	height:965px;
+	background: url(http://p1.img.cctvpic.com/photoAlbum/templet/common/DEPA1527146055132517/shijiebei17891_bgTop_17891_180528.png) no-repeat top center;
+}
+
+.shijiebeiA17891_md01 .con .logo {
+	margin: 0 auto;
+	width: 1152px;
+	height: 447px;
+	text-align: center;
+	padding: 160px 0 107px 0;
+}
+
+.shijiebeiA17891_md01 .con .logo img {
+	margin: 0 auto;
+}
+
+.shijiebeiA17891_md01 .con .logos {
+	margin: 0 auto;
+	height: 140px;
+	width: 1200px;
+	position: relative;
+}
+
+.shijiebeiA17891_md01 .con .logos .yangshi {
+	display: block;
+	width: 448px;
+	height: 87px;
+	position: absolute;
+	top: 300px;
+	left: 106px;
+}
+
+.shijiebeiA17891_md01 .con .logos .mouse {
+	width: 65px;
+	position: absolute;
+	top: 300px;
+	right: 283px;
+}
+
+.shijiebeiA17891_md01 .con .logos .mouse img {
+	display: block;
+	float: right;
+}
+
+.shijiebeiA17891_md01 .con .logos .mouse p {
+	color: #a6916b;
+	font-size: 15px;
+	font-family: "microsoft yahei";
+	width: 100%;
+	text-align: center;
+}
+
+#page_bottom {}
+
+#page_bottom .cntv_footer {
+	background: #f8f8f9;
+	border-top: solid 1px #fcfcfd;
+	clear: both;
+	_height: 100px;
+	margin: 0 auto;
+	min-height: 100px;
+	width: 960px;
+}
+
+#page_bottom .cntv_footer_hdc {
+	border-top: solid 1px #ebe7e8;
+	margin: 0 auto;
+	width: 960px;
+}
+
+#page_bottom .cntv_footer a {}
+
+#page_bottom .cntv_footer .bottom_link {
+	padding: 10px 0 0;
+	line-height: 22px;
+	text-align: center;
+	font-family: "宋体";
+}
+
+#page_bottom .cntv_footer .bottom_link p a {
+	padding: 0 2px 0 3px;
+}
+
+#page_bottom .cntv_footer .bottom_copyright {
+	width: 570px;
+	margin: 0 auto;
+	padding-bottom: 16px;
+	_height: 1px;
+	min-height: 1px;
+	font-family: "宋体";
+	font-size: 12px;
+}
+
+#page_bottom .cntv_footer,
+#page_bottom .cntv_footer a {
+	color: #a3a3a3;
+}
+
+#page_bottom .cntv_footer .bottom_copyright .copyright_gongshang_logo {
+	float: right;
+	margin-top: 10px;
+}
+
+#page_bottom {
+	margin-top: 10px;
+	height: 143px;
+	overflow: hidden;
+}
+
+#page_bottom .cntv_footer_hdc {
+	border-top: none;
+	margin: 0 auto;
+	width: 960px;
+}
+
+#page_bottom .cntv_footer {
+	background: none repeat scroll 0 0 transparent;
+	border-top: 1px solid #FCFCFD;
+	clear: both;
+	color: #333333;
+	margin: 0 auto;
+	min-height: 10px;
+	width: 960px;
+}
+
+#page_bottom .cntv_footer a {
+	color: #333333;
+	margin: 0 1px;
+}
+
+#page_bottom .cntv_footer .bottom_link {
+	line-height: 52px;
+	text-align: center;
+	font-family: "宋体";
+}
+
+#page_bottom .cntv_footer .bottom_link a {
+	padding: 0 2px 0 4px;
+}
+
+#page_bottom .cntv_footer .bottom_copyright {
+	width: 828px;
+	margin: 0 auto;
+	padding-bottom: 16px;
+	_height: 1px;
+	min-height: 1px;
+	font-family: Arial, "宋体";
+	font-size: 12px;
+}
+
+#page_bottom .cntv_footer .bottom_copyright p {
+	float: left;
+	width: 670px;
+	_display: inline;
+	text-align: center;
+	line-height: 18px;
+	font-size: 12px;
+}
+
+#page_bottom .cntv_footer .bottom_copyright p img {
+	display: inline;
+}
+
+#page_bottom .cntv_footer .bottom_copyright .copyright_gongshang_logo {
+	float: right;
+	margin-top: 9px;
+}
+
+#page_bottom .cntv_footer .bottom_copyright .copyright_wangjing_logo {
+	float: right;
+	margin-top: 6px;
+}

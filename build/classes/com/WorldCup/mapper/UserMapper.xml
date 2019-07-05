@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.WorldCup.dao.UserMapper" >
+  
+  <resultMap id="BaseResultMap" type="com.WorldCup.pojo.User" >
+    <id column="U_ID" property="uId" jdbcType="DECIMAL" />
+    <result column="U_USER" property="uUser" jdbcType="VARCHAR" />
+    <result column="U_PWD" property="uPwd" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.WorldCup.pojo.User" extends="BaseResultMap" >
+    <result column="U_PIC" property="uPic" jdbcType="CLOB" />
+  </resultMap>
+
+
+  <insert id="insert" parameterType="com.WorldCup.pojo.User" >
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      
+        U_ID,
+      
+      <if test="uUser != null" >
+        U_USER,
+      </if>
+      <if test="uPwd != null" >
+        U_PWD,
+      </if>
+      <if test="uPic != null" >
+        U_PIC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      
+      u_seq.nextval,
+      
+      <if test="uUser != null" >
+        #{uUser,jdbcType=VARCHAR},
+      </if>
+      <if test="uPwd != null" >
+        #{uPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="uPic != null" >
+        #{uPic,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="userLogin" parameterType="com.WorldCup.pojo.User"
+		resultMap="ResultMapWithBLOBs">
+		select * from users where
+		u_User = #{uUser,jdbcType=VARCHAR}
+		and
+		u_Pwd = #{uPwd,jdbcType=VARCHAR}
+  </select>
+  
+
+	<select id="queryAllUser" resultMap="ResultMapWithBLOBs">
+		select * from users
+	</select>
+
+    <delete id="deleteUserById" parameterType="java.lang.Integer">
+       delete from users where u_id=#{uId}
+    </delete>
+    
+    <select id="queryUserById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select * from users where u_id=#{uId}
+    </select>
+    
+    <update id="updateUserById" parameterType="com.WorldCup.pojo.User">
+       update users set u_pic=#{uPic},u_user=#{uUser} where u_id=#{uId}
+    </update>
+  
+</mapper>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.WorldCup.dao.PlayerMapper" >
+
+
+  <resultMap id="BaseResultMap" type="com.WorldCup.pojo.Player" >
+    <id column="P_ID" property="pId" jdbcType="DECIMAL" />
+    <result column="P_NAME" property="pName" jdbcType="VARCHAR" />
+    <result column="P_TNAME" property="pTname" jdbcType="VARCHAR" />
+    <result column="P_NUMBER" property="pNumber" jdbcType="VARCHAR" />
+    <result column="P_BIRTH" property="pBirth" jdbcType="TIMESTAMP" />
+    <result column="P_HEIGHT" property="pHeight" jdbcType="VARCHAR" />
+    <result column="P_WEIGHT" property="pWeight" jdbcType="VARCHAR" />
+    <result column="P_POSITION" property="pPosition" jdbcType="VARCHAR" />
+    <result column="P_LIKE" property="pLike" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.WorldCup.pojo.Player" extends="BaseResultMap" >
+    <result column="P_PIC" property="pPic" jdbcType="CLOB" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.WorldCup.pojo.Player" >
+    insert into PLAYER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+        
+       P_ID,
+       
+      <if test="pName != null" >
+        P_NAME,
+      </if>
+      <if test="pTname != null" >
+        P_TNAME,
+      </if>
+      <if test="pNumber != null" >
+        P_NUMBER,
+      </if>
+      <if test="pBirth != null" >
+        P_BIRTH,
+      </if>
+      <if test="pHeight != null" >
+        P_HEIGHT,
+      </if>
+      <if test="pWeight != null" >
+        P_WEIGHT,
+      </if>
+      <if test="pPosition != null" >
+        P_POSITION,
+      </if>
+      <if test="pLike != null" >
+        P_LIKE,
+      </if>
+      <if test="pPic != null" >
+        P_PIC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      
+      p_seq.nextval,
+      
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pTname != null" >
+        #{pTname,jdbcType=VARCHAR},
+      </if>
+      <if test="pNumber != null" >
+        #{pNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pBirth != null" >
+        #{pBirth,jdbcType=VARCHAR},
+      </if>
+      <if test="pHeight != null" >
+        #{pHeight,jdbcType=VARCHAR},
+      </if>
+      <if test="pWeight != null" >
+        #{pWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="pPosition != null" >
+        #{pPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="pLike != null" >
+        #{pLike,jdbcType=DECIMAL},
+      </if>
+      <if test="pPic != null" >
+        #{pPic,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  
+  <select id="queryPlayerById" resultMap="ResultMapWithBLOBs">
+		select * from player where p_id=#{pId}
+  </select>
+  
+  <select id="queryAllPlayer" resultMap="ResultMapWithBLOBs">
+		select * from player
+  </select>
+  
+  <delete id="deletePlayerById" parameterType="java.lang.Integer">
+       delete from player where p_id=#{pId}
+  </delete>
+  
+  <update id="updateLike" parameterType="java.lang.Integer">
+	   update player set p_like=p_like+1 where p_id=#{#pId}
+  </update>
+  
+  <update id="updatePlayerById" parameterType="com.WorldCup.pojo.Player">
+       update player set p_name=#{pName},p_tname=#{pTname},p_birth=#{pBirth},p_height=#{pHeight},p_weight=#{pWeight},p_number=#{pNumber},p_position=#{pPosition},p_pic=#{pPic}where p_id=#{pId}
+  </update>
+  
+  </mapper>

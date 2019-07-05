@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.WorldCup.dao.TeamMapper" >
+  <resultMap id="BaseResultMap" type="com.WorldCup.pojo.Team" >
+    <id column="T_ID" property="tId" jdbcType="DECIMAL" />
+    <result column="T_NAME" property="tName" jdbcType="VARCHAR" />
+    <result column="T_COACH" property="tCoach" jdbcType="VARCHAR" />
+    <result column="T_INFO" property="tInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.WorldCup.pojo.Team" extends="BaseResultMap" >
+    <result column="T_PIC" property="tPic" jdbcType="CLOB" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="com.WorldCup.pojo.Team" >
+    insert into TEAM (T_ID, T_NAME, T_COACH, 
+      T_INFO, T_PIC)
+    values (t_seq.nextval,
+     #{tName,jdbcType=VARCHAR}, #{tCoach,jdbcType=VARCHAR}, 
+      #{tInfo,jdbcType=VARCHAR}, #{tPic,jdbcType=CLOB})
+  </insert>
+  
+  	<select id="queryAllTeamInfo" resultMap="ResultMapWithBLOBs">
+		select * from TEAM
+	</select>
+	
+	<delete id="deleteTeamInfoById" parameterType="java.lang.Integer">
+	   delete from TEAM where t_id = #{tId}
+	</delete>
+	
+	<select id="queryTeamInfoById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+		select * from TEAM where t_id = #{tId}
+	</select>	
+	
+	<update id="updateTeamInfoById" parameterType="com.WorldCup.pojo.Team" >
+       update TEAM set t_Pic=#{tPic},t_name=#{tName},t_Coach=#{tCoach},t_Info=#{tInfo} where t_id=#{tId}
+    </update>	
+</mapper>

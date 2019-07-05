@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.WorldCup.dao.GameMapper" >
+  <resultMap id="BaseResultMap" type="com.WorldCup.pojo.Game" >
+    <id column="G_ID" property="gId" jdbcType="DECIMAL" />
+    <result column="G_NAME" property="gName" jdbcType="VARCHAR" />
+    <result column="G_GOAL" property="gGoal" jdbcType="DECIMAL" />
+    <result column="G_POINT" property="gPoint" jdbcType="DECIMAL" />
+    <result column="G_RANKING" property="gRanking" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.WorldCup.pojo.Game" extends="BaseResultMap" >
+    <result column="G_HEADER" property="gHeader" jdbcType="CLOB" />
+  </resultMap>
+  
+  
+  <select id="queryAllGame" resultMap="ResultMapWithBLOBs">
+		select * from game 
+		
+	</select>
+	
+	 <select id="queryFollowGame" resultMap="ResultMapWithBLOBs">
+		select * from game where g_point=1
+		
+	</select>
+	
+	
+	<delete id="deleteGameById" parameterType="java.lang.Integer">
+       delete from game where g_id=#{gId}
+    </delete>
+    
+    
+   	<insert id="insert" parameterType="com.WorldCup.pojo.Game" >
+    insert into GAME (G_ID, G_NAME, G_GOAL, 
+      G_POINT, G_RANKING, G_HEADER
+      )
+    values (g_seq.nextval, #{gName,jdbcType=VARCHAR}, #{gGoal,jdbcType=DECIMAL}, 
+      #{gPoint,jdbcType=DECIMAL}, #{gRanking,jdbcType=DECIMAL}, #{gHeader,jdbcType=CLOB}
+      )
+  </insert>
+  
+  
+  <select id="queryGameById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select * from game where g_id=#{gId}
+    </select>
+    
+    
+     <select id="queryGameByName" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select * from game where g_name=#{gName}
+    </select>
+    
+    
+    
+    <update id="updateGameById" parameterType="com.WorldCup.pojo.Game">
+       update game set g_header=#{gHeader},g_name=#{gName},g_goal=#{gGoal},g_point=#{gPoint},g_ranking=#{gRanking}  where  g_id=#{gId}
+    </update>
+    
+    <update id="followGame" parameterType="com.WorldCup.pojo.Game">
+       update game set g_point=1  where  g_id=#{gId}
+    </update>
+    
+    <update id="unFollowGame" parameterType="com.WorldCup.pojo.Game">
+       update game set g_point=0  where  g_id=#{gId}
+    </update>
+    
+  
+  
+  <insert id="followGameById" parameterType="com.WorldCup.pojo.Game" >
+    insert into FOLLOW (G_ID,G_NAME, G_GOAL, 
+      G_POINT, G_RANKING, G_HEADER
+      )
+    values (f_seq.nextval, #{fName,jdbcType=VARCHAR}, #{fGoal,jdbcType=DECIMAL}, 
+      #{fPoint,jdbcType=DECIMAL}, #{fRanking,jdbcType=DECIMAL}, #{fHeader,jdbcType=CLOB}
+      )
+  </insert>
+  
+  
+  
+</mapper>

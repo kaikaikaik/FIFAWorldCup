@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.WorldCup.dao.NewsMapper" >
+  <resultMap id="BaseResultMap" type="com.WorldCup.pojo.News" >
+    <id column="NID" property="nid" jdbcType="DECIMAL" />
+    <result column="NTIME" property="ntime" jdbcType="VARCHAR" />
+    <result column="NINFO" property="ninfo" jdbcType="CHAR" />
+    <result column="NPIC" property="npic" jdbcType="VARCHAR" />
+    <result column="NTITLE" property="ntitle" jdbcType="VARCHAR" />
+    <result column="THUMP" property="thump" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.WorldCup.pojo.News"
+		extends="BaseResultMap">
+		<result column="I_IMG" property="iImg" jdbcType="CLOB" />
+	</resultMap>
+	<insert id="insert" parameterType="com.WorldCup.pojo.News">
+		insert into NEWS (NID,NTIME, NINFO,NPIC,NTITLE,THUMP)
+		values (n_seq.nextval,
+		#{ntime,jdbcType=VARCHAR},
+		#{ninfo,jdbcType=VARCHAR},
+		#{npic,jdbcType=CLOB},
+		#{ntitle,jdbcType=VARCHAR},
+		${0}
+		)
+	</insert>
+ 
+  <select id="queryAllNews" resultMap="ResultMapWithBLOBs">
+  	select * from NEWS
+  </select>
+  <delete id="deleteNewsById" parameterType="java.lang.Integer">
+	   delete from NEWS where NID = #{nid}
+	</delete>
+  <select id="queryNewsById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+		select * from NEWS where NID = #{nid}
+  </select>
+  <select id="updateNewsById" parameterType="com.WorldCup.pojo.News">
+  		update News set NTIME = #{ntime,jdbcType=VARCHAR},
+  		NINFO = #{ninfo,jdbcType=VARCHAR} ,
+  		NPIC = #{npic,jdbcType=CLOB},
+  		NTITLE = #{ntitle,jdbcType=VARCHAR},
+  		THUMP = #{thump,jdbcType=DECIMAL}
+  		where NID = #{nid}
+  </select>
+  
+  <select id="updateNewsThumpById" parameterType="java.lang.Integer">
+  		update News set THUMP = THUMP + ${1}
+  		where NID = #{nid}
+  </select>
+	
+  
+</mapper>
